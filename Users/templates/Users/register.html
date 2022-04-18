@@ -1,0 +1,71 @@
+{% extends "Users/layout.html" %}
+
+{% block body %}
+    <div class="container">
+        <div class="Header">
+            <h2 style=padding-left:14px;padding-top:20px>Sign Up</h2>
+        </div>
+
+        {% if message %}
+            <div class="card m-2 bg-dark text-white">
+                <div class="card-body">
+                    {{ message }}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="row">
+            
+            <div class="col-md-4 col-sm-12 login-quote">
+                <div class="card m-2"
+                >
+                <div class="card-body"> 
+                    <p>
+                        <i class="fas fa-quote-left"></i> 
+                         This a <b>Good
+                         code </b> example 
+                        </p>
+                        <p>
+                        implemnentation of 
+                        the registration system
+                        </p>
+                        
+                        <p>
+                        using <b>ORM and MVC</b> .
+                       <i class="fas fa-quote-right"></i>
+                        </p>
+                </div>
+                </div>
+            </div>
+
+            <form action="{% url 'register' %}" method="post" class="col-md-8 col-sm-12">
+                <div class="m-2 form-data">
+
+                
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="email" name="email" placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="first_name" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="last_name" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+                    </div>
+                    <input class="btn btn-outline-dark" type="submit" value="Sign-Up">
+                    <p style="padding: 5px;">Wanna login? <a  href="{% url 'login' %}">Log-in here!</a></p>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+{% endblock %}

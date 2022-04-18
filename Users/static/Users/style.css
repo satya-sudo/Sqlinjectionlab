@@ -1,0 +1,44 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;600&display=swap'); */
+
+body {
+    font-family: 'Red Rose', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+}
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-60%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: .5;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+
+.navbar {
+animation: .6s ease-out 0s 1 fadeOut;
+}
+
+.card  {
+    animation: .6s ease-out 0s 1 slideInFromLeft;
+}
+
+.card:hover {
+    transform: scale(1.001);
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }   

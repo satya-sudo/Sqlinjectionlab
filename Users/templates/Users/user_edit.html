@@ -1,0 +1,137 @@
+{% extends "Users/layout.html" %}
+
+    
+    {% block body %}
+<div class="container" style=padding-top:20px>
+<div class="row">
+    <div class="col-lg-4">
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+          <h5 class="my-3">{{ requested_user.first_name }} {{requested_user.last_name}}</h5>
+          <p class="text-muted mb-1">score : {{requested_user.score}}</p>
+          <p class="text-muted mb-4">view : {{requested_user.views}}</p>
+          <div class="d-flex justify-content-center mb-2">
+          
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4 mb-lg-0">
+        <div class="card-body p-0">
+          <ul class="list-group list-group-flush rounded-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <i class="fas fa-globe fa-lg text-warning"></i>
+              <p class="mb-0">github.com/{{requested_user.username}}</p>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <i class="fab fa-github fa-lg" style="color: #333333;"></i>
+              <p class="mb-0">twitter.com/{{requested_user.username}}</p>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+              <p class="mb-0">gmail.com/{{requested_user.username}}</p>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+              <p class="mb-0">linkedIn.in/{{requested_user.username}}</p>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+              <p class="mb-0">mdbootstrap/{{requested_user.username}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card mb-4">
+        <div class="card-body">
+        <form action="{% url 'edit_profile' %}" method="POST">
+            {% csrf_token %}
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">First Name</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">
+                <input type="text" name="first_name" class="form-control" value="{{requested_user.first_name}}">
+              </p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Last Name</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">
+                <input type="text" name="last_name" class="form-control" value="{{requested_user.last_name}}">
+              </p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Email</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">
+                <input type="text" name="email" class="form-control" value="{{requested_user.email}}">
+              </p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">About</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">
+                <textarea name="about" class="form-control" rows="5">{{requested_user.about}}</textarea>
+              </p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">User Type</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{% if requested_user.is_admin %}
+                Admin User
+              {% else %}
+                Normal User
+              {% endif %}</p>
+              </p>
+            </div>
+          </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Score</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                  <input type="text" name="score" class="form-control" value="{{requested_user.score}}">
+                </p>
+              </div>
+            </div>
+            <br>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Views</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">
+                    <input type="text" name="views" class="form-control" value="{{requested_user.views}}">
+                  </p>
+                </div>
+              </div>
+              <br>
+            <button type="submit" class="btn btn-primary btn-block">Update</button>
+            </form>
+        </div>
+      </div>
+</div>
+</div>
+{% endblock %}

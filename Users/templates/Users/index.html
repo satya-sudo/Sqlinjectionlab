@@ -1,0 +1,70 @@
+{% extends "Users/layout.html" %}
+
+{% block body %}
+
+<div class ="container" >
+    <h1 class="text-primary">
+        <br>
+        Welcome To The Project Board..
+        view all Public Projects
+        <br>
+    </h1>
+
+        <div class="card">
+        <div class="card-body">
+           
+            <form action="/search" method="get">
+                <div class="form-row">
+                    {% comment %} <div class="input-group w-50">
+                        <input type="user" class="form-control rounded" placeholder="Search By User" aria-label="Search" aria-describedby="search-addon" name="user" />
+                    </div> {% endcomment %}
+                    <br>
+                    <div class="input-group ">
+                        <input type="search" class="form-control rounded" placeholder="Search By Project Title" aria-label="Search" aria-describedby="search-addon"  name="title"/>
+                        <button type="submit" class="btn btn-outline-primary">search</button>
+                    </div>
+                </div>
+        </form>
+        </div>
+    </div>
+  
+    <br>
+
+    <div class="row">
+        {% for i in projects %}
+        
+        <div class="col-12">
+        {% comment %} <div class="card border border-primary shadow-0 mb-3" style="max-width: 18rem;">
+            <div class="card-header">{{i.title}}</div>
+            <div class="card-body text-primary">
+            <h5 class="card-title">By {{i.user}}</h5>
+            <p class="card-text">{{i.description}}</p>
+            </div>
+        </div> {% endcomment %}
+
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title text-uppercase text-primary">{{i.title}}</h5>
+                <p class="card-text">{{i.description}}</p>
+                <h5 class="card-title text-primary ">By {{i.user}}</h5>
+                <h6 class="text-info">{{i.type}}</h6>
+                <a href="{{i.link}}" class="btn btn-primary">{{i.link}}</a>
+                
+                </div>
+            </div>
+            <br>
+
+        </div>
+
+        {% empty %}
+        <div class="card m-2 bg-dark text-white">
+            <div class="card-body">
+                Sorry no matching projects found...
+            </div>
+        </div>
+        {% endfor %}
+
+
+</div>
+
+{% endblock %}
